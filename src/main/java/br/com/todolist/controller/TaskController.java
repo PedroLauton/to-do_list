@@ -1,21 +1,21 @@
 package br.com.todolist.controller;
 
-import java.time.LocalDateTime;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.todolist.model.dtos.TaskCompletedPatchDTO;
+import br.com.todolist.model.dtos.TaskPatchDTO;
 import br.com.todolist.model.dtos.TaskRequestDTO;
 import br.com.todolist.model.dtos.TaskResponseDTO;
 import br.com.todolist.service.TaskService;
@@ -53,15 +53,31 @@ public class TaskController {
 	
 	@PostMapping
 	public ResponseEntity<TaskResponseDTO> createTask(@RequestBody @Valid TaskRequestDTO taskRequestDTO){
-		LocalDateTime requestDateTime = LocalDateTime.now();
-		TaskResponseDTO taskResponseDTO = taskService.createTask(taskRequestDTO, requestDateTime);
+		TaskResponseDTO taskResponseDTO = taskService.createTask(taskRequestDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(taskResponseDTO);
 	}
 	
-	// Método provisório. Necessita de mudanças
 	@PatchMapping("/{id}/concluir")
-	public ResponseEntity<TaskResponseDTO> completedTask(@PathVariable Long id, @RequestBody TaskCompletedPatchDTO taskCompletedPatchDTO){
-		TaskResponseDTO taskResponseDTO = taskService.completedTask(id, taskCompletedPatchDTO);
+	public ResponseEntity<TaskResponseDTO> completedTask(@PathVariable Long id){
+		TaskResponseDTO taskResponseDTO = taskService.completedTask(id);
 		return ResponseEntity.ok(taskResponseDTO);
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<TaskResponseDTO> putTask(@PathVariable Long id, @RequestBody @Valid TaskRequestDTO taskRequestDTO){
+		TaskResponseDTO taskResponseDTO = taskService.putTask(id, taskRequestDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body(taskResponseDTO);
+	}
+	
+	@PatchMapping("/{id}")
+	public ResponseEntity<TaskResponseDTO> patchTask(@PathVariable Long id, @RequestBody @Valid TaskPatchDTO taskPatchDTO){
+		TaskResponseDTO taskResponseDTO = taskService.patchTask(id, taskPatchDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body(taskResponseDTO);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteTask(@PathVariable Long id){
+		taskService.deleteTask(id);
+		return ResponseEntity.noContent().build();
 	}
 }

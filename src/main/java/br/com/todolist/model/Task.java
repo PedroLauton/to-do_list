@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,7 +18,6 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Entity
 @Data
@@ -114,8 +114,9 @@ public class Task {
 	public LocalDateTime getCriadaEm() {
 		return criadaEm;
 	}
-
-	public void setCriadaEm(LocalDateTime criadaEm) {
-		this.criadaEm = criadaEm;
+	
+	@PrePersist
+	private void dateTaskCreated() {
+		criadaEm = LocalDateTime.now();
 	}
 }

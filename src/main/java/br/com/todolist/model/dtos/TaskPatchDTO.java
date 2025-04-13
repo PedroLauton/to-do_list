@@ -1,7 +1,6 @@
 package br.com.todolist.model.dtos;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import br.com.todolist.enums.Prioridade;
@@ -14,13 +13,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TaskPatchDTO {
 	
-	private Optional<String> titulo;
-	private Optional<String> descricao;
-	private Optional<Prioridade> prioridade;
-	private Optional<LocalDate> dataLimite;
-	private Optional<Boolean> concluida; 
-	private Optional<String> categoria;
-	private Optional<LocalDateTime> criadaEm;
+	private Optional<String> titulo = Optional.empty();
+	private Optional<String> descricao = Optional.empty();;
+	private Optional<Prioridade> prioridade = Optional.empty();;
+	private Optional<LocalDate> dataLimite = Optional.empty();;
+	private Optional<Boolean> concluida = Optional.empty();; 
+	private Optional<String> categoria = Optional.empty();;
 	
 	public TaskPatchDTO() {
 	}
@@ -71,12 +69,5 @@ public class TaskPatchDTO {
 	
 	public void setCategoria(Optional<String> categoria) {
 		this.categoria = categoria;
-	}
-	public Optional<LocalDateTime> getCriadaEm() {
-		return criadaEm;
-	}
-	
-	public void setCriadaEm(Optional<LocalDateTime> criadaEm) {
-		this.criadaEm = criadaEm;
 	}
 }
