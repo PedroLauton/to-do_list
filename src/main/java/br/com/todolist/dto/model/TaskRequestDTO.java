@@ -1,4 +1,4 @@
-package br.com.todolist.model.dtos;
+package br.com.todolist.dto.model;
 
 import java.time.LocalDate;
 
@@ -11,6 +11,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Classe DTO responsável pela captação de dados.
+ * 
+ * <p>Essa clase tem como objetivo capturar os dados enviados nas requisições Post e Put. Alguns atributos tem validações
+ * de acordo com as regras de negócio da API.</p>
+ * 
+ * @author Pedro Lauton
+ * @version 1.0
+ * @since 20/04/2025
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,8 +40,7 @@ public class TaskRequestDTO {
     @Future(message = "A data limite deve ser uma data futura.")
 	private LocalDate dataLimite;
     
-    @NotNull(message = "A tarefa deve ter o seu status informada.")
-	private Boolean concluida; 
+	private Boolean concluida = false; 
     
     @NotBlank(message = "A categoria da tarefa deve ser informada.")
 	private String categoria;
@@ -39,6 +48,15 @@ public class TaskRequestDTO {
     public TaskRequestDTO() {
     }
     
+	public TaskRequestDTO(String titulo, String descricao, Prioridade prioridade, LocalDate dataLimite, Boolean concluida, String categoria) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.prioridade = prioridade;
+		this.dataLimite = dataLimite;
+		this.concluida = concluida;
+		this.categoria = categoria;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}

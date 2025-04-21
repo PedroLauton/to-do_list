@@ -19,6 +19,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entidade responsável pelo mapeamento e persistência de tarefas no banco de dados.
+ * 
+ * <p>Contém os atributos necessários para representar uma tarefa, como título, descrição, 
+ * prioridade, data limite, status de conclusão, categoria e a data de criação.</p>
+ * 
+ * <p>Regras de validação são aplicadas via anotações da Bean Validation para garantir 
+ * a integridade dos dados enviados pelo cliente.</p>
+ * 
+ * <p>O campo criadaEm é automaticamente populado no momento da persistência 
+ * da entidade através do método @PrePersist.</p>
+ * 
+ * @author Pedro Lauton
+ * @version 1.0
+ * @since 20/04/2025
+ */
 @Entity
 @Data
 @NoArgsConstructor
@@ -44,8 +60,7 @@ public class Task {
     @Future(message = "A data limite deve ser uma data futura.")
 	private LocalDate dataLimite;
     
-    @NotNull(message = "A tarefa deve ter o seu status informada.")
-	private Boolean concluida; 
+	private Boolean concluida = false; 
     
     @NotBlank(message = "A categoria da tarefa deve ser informada.")
 	private String categoria;
@@ -55,12 +70,18 @@ public class Task {
     public Task() {
     }
     
-	public Long getId() {
-		return id;
+	public Task(String titulo, String descricao, Prioridade prioridade, LocalDate dataLimite, Boolean concluida,  String categoria, LocalDateTime criadaEm) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.prioridade = prioridade;
+		this.dataLimite = dataLimite;
+		this.concluida = concluida;
+		this.categoria = categoria;
+		this.criadaEm = criadaEm;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Long getId() {
+		return id;
 	}
 
 	public String getTitulo() {

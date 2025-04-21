@@ -2,9 +2,24 @@ package br.com.todolist.exception;
 
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+/**
+ * DTO responsável por representar de forma padronizada as respostas de erro da API.
+ * 
+ * <p>Esta classe é utilizada para encapsular informações relevantes sobre falhas
+ * ocorridas durante o processamento de requisições, facilitando a comunicação
+ * de erros entre o servidor e o cliente.</p>
+ * 
+ * @author Pedro Lauton
+ * @version 1.0
+ * @since 20/04/2025
+ */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ErrorResponse {
 	
 	private LocalDateTime dateTime;

@@ -1,4 +1,4 @@
-package br.com.todolist.model.dtos;
+package br.com.todolist.dto.model;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -8,6 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Classe DTO responsável pela captação de dados.
+ * 
+ * <p>Essa clase tem como objetivo capturar os dados da requisição HTTP Patch. Seus atributos podem
+ * ou não conter dados</p>
+ * 
+ * @author Pedro Lauton
+ * @version 1.0
+ * @since 20/04/2025
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +33,18 @@ public class TaskPatchDTO {
 	public TaskPatchDTO() {
 	}
 	
+	public TaskPatchDTO(Optional<String> titulo, Optional<String> descricao, Optional<Prioridade> prioridade,
+			Optional<LocalDate> dataLimite, Optional<Boolean> concluida, Optional<String> categoria) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.prioridade = prioridade;
+		this.dataLimite = dataLimite;
+		this.concluida = concluida;
+		this.categoria = categoria;
+	}
+
+
+
 	public Optional<String> getTitulo() {
 		return titulo;
 	}

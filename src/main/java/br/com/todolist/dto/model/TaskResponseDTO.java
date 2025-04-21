@@ -1,4 +1,4 @@
-package br.com.todolist.model.dtos;
+package br.com.todolist.dto.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,6 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * DTO de resposta para uma Task.
+ * 
+ * <p>Essa classe é utilizada para retornar ao cliente os dados de uma Task somente,
+ * seja após sua criação, atualização ou consulta.</p>
+ * 
+ * @author Pedro Lauton
+ * @version 1.0
+ * @since 20/04/2025
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +33,18 @@ public class TaskResponseDTO {
 	private LocalDateTime criadaEm;
 	
 	public TaskResponseDTO() {
+	}
+	
+	public TaskResponseDTO(Long id, String titulo, String descricao, Prioridade prioridade, LocalDate dataLimite,
+			Boolean concluida, String categoria, LocalDateTime criadaEm) {
+		this.id = id;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.prioridade = prioridade;
+		this.dataLimite = dataLimite;
+		this.concluida = concluida;
+		this.categoria = categoria;
+		this.criadaEm = criadaEm;
 	}
 	
 	public Long getId() {
