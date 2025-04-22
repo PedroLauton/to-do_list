@@ -3,6 +3,7 @@ package br.com.todolist.dto.model;
 import java.time.LocalDate;
 
 import br.com.todolist.enums.Prioridade;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,23 +26,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskRequestDTO {
-	
+
+    @Schema(description = "Título da Task", example = "Estudar Spring Boot")
     @NotBlank(message = "O título não pode estar vazio.")
     @Size(min = 1, max = 20, message = "O título deve conter entre 1 e 20 caracteres.")
 	private String titulo;
     
+    @Schema(description = "Descrição detalhada da Task", example = "Prestar atenção nas aulas do professor Giovani e fazer os exercícios.")
     @NotBlank(message = "A descrição é opcional, mas não pode ser nula. Implemente a descrição com o campo vazio na requisição.")
 	private String descricao;
 	
+    @Schema(description = "Prioridade da Task (ALTA, MEDIA, BAIXA)", example = "ALTA")
     @NotNull(message = "A prioridade não deve ser nula. Escolha entre: ALTA, MEDIA ou BAIXA.")
 	private Prioridade prioridade;
 	
+    @Schema(description = "Data limite para realizar a Task", example = "2025-04-30")
     @NotNull(message = "A data limite deve ser informada.")
     @Future(message = "A data limite deve ser uma data futura.")
 	private LocalDate dataLimite;
     
+    @Schema(description = "Estado da Task", example = "true")
 	private Boolean concluida = false; 
     
+    @Schema(description = "Categoria da Task", example = "Faculdade")
     @NotBlank(message = "A categoria da tarefa deve ser informada.")
 	private String categoria;
 

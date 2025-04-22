@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import br.com.todolist.enums.Prioridade;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,11 +24,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TaskPatchDTO {
 	
+    @Schema(description = "Título da Task", example = "Estudar Spring Boot")
 	private Optional<String> titulo = Optional.empty();
+    
+    @Schema(description = "Descrição detalhada da Task", example = "Prestar atenção nas aulas do professor Giovani e fazer os exercícios.")
 	private Optional<String> descricao = Optional.empty();;
+	
+    @Schema(description = "Prioridade da Task (ALTA, MEDIA, BAIXA)", example = "ALTA")
 	private Optional<Prioridade> prioridade = Optional.empty();;
+	
+    @Schema(description = "Data limite para realizar a Task", example = "2025-04-30")
 	private Optional<LocalDate> dataLimite = Optional.empty();;
+	
+    @Schema(description = "Estado da Task", example = "true")
 	private Optional<Boolean> concluida = Optional.empty();; 
+	
+    @Schema(description = "Categoria da Task", example = "Faculdade")
 	private Optional<String> categoria = Optional.empty();;
 	
 	public TaskPatchDTO() {

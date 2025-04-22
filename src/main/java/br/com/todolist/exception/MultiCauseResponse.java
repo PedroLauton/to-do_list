@@ -2,6 +2,7 @@ package br.com.todolist.exception;
 
 import java.util.Map;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -18,7 +19,8 @@ import lombok.Data;
  */
 @Data
 public class MultiCauseResponse extends ErrorResponse {
-
+	
+	@Schema(description = "Campos de erros, caso a exceção tenha detalhes específicos sobre os campos inválidos. A chave do mapa representa o nome do campo com erro, e o valor representa a mensagem de erro correspondente.")
 	private Map<String, String> fieldErrors;
 
 	public MultiCauseResponse(int status, String errorTitle, String errorMessage, Map<String, String> fieldErrors) {

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import br.com.todolist.enums.Prioridade;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,13 +24,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TaskResponseDTO {
 	
+    @Schema(description = "ID da Task", example = "1")
 	private Long id;
+	
+    @Schema(description = "Título da Task", example = "Estudar Spring Boot")
 	private String titulo;
+    
+    @Schema(description = "Descrição detalhada da Task", example = "Prestar atenção nas aulas do professor Giovani e fazer os exercícios.")
 	private String descricao;
+    
+    @Schema(description = "Prioridade da Task (ALTA, MEDIA, BAIXA)", example = "ALTA")
 	private Prioridade prioridade;
+    
+    @Schema(description = "Data limite para realizar a Task", example = "2025-04-30")
 	private LocalDate dataLimite;
+    
+    @Schema(description = "Estado da Task", example = "true")
 	private Boolean concluida; 
+    
+    @Schema(description = "Categoria da Task", example = "Faculdade")
 	private String categoria;
+    
+    @Schema(description = "Data e horário de criação da Task", example = "2025-04-21T22:29:28")
 	private LocalDateTime criadaEm;
 	
 	public TaskResponseDTO() {

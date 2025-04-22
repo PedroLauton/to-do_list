@@ -2,6 +2,7 @@ package br.com.todolist.exception;
 
 import java.time.LocalDateTime;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +23,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ErrorResponse {
 	
+    @Schema(description = "Data e hora da ocorrência do erro", example = "2025-04-21T22:29:28")
 	private LocalDateTime dateTime;
+    
+    @Schema(description = "Código HTTP de erro", example = "404")
 	private int status;
+    
+    @Schema(description = "Título do erro", example = "EInvalid ID")
 	private String errorTitle;
+    
+    @Schema(description = "Detalhamento do erro", example = "the ID provided for the task does not exist")
 	private String errorMessage;
 	
 	public ErrorResponse(int status, String errorTitle, String errorMessage) {

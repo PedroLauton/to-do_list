@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import br.com.todolist.model.Task;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,10 +32,19 @@ import lombok.NoArgsConstructor;
 @JsonPropertyOrder({ "tasks", "page", "size", "totalPages", "totalElements" })
 public class PaginationResponseDTO {
 	
+    @Schema(description = "Lista com as Tasks")
 	private List<Task> tasks;
+    
+    @Schema(description = "Página atual", example = "0")
 	private Integer page;
+    
+    @Schema(description = "Quantidade de Tasks exibidas na página", example = "5")
 	private Integer size;
+    
+    @Schema(description = "Quantidade total de páginas retornadas", example = "3")
 	private Integer totalPages;
+    
+    @Schema(description = "Quantidade total de Tasks retornadas", example = "5")
 	private Long totalElements;
 	
 	public PaginationResponseDTO() {

@@ -31,7 +31,7 @@ public class TaskControllerFunctionalTest {
 					{
 					  "titulo": "Estudar Spring Boot",
 					  "descricao": "Revisar conceitos de Spring Boot",
-					  "dataLimite": "2025-04-21",
+					  "dataLimite": "2025-04-22",
 					  "prioridade": "MEDIA",
 					  "categoria": "Faculdade"
 					}
