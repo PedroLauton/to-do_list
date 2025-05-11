@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.todolist.dto.model.TaskRequestDTO;
 import br.com.todolist.dto.model.TaskResponseDTO;
-import br.com.todolist.enums.Prioridade;
+import br.com.todolist.model.enumeration.Prioridade;
 import br.com.todolist.service.TaskService;
 
 @ExtendWith(MockitoExtension.class)

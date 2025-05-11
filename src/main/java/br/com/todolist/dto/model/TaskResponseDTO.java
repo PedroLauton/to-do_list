@@ -3,7 +3,7 @@ package br.com.todolist.dto.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import br.com.todolist.enums.Prioridade;
+import br.com.todolist.model.enumeration.Prioridade;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;

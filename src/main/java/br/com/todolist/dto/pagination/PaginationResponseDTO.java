@@ -58,8 +58,6 @@ public class PaginationResponseDTO {
 		this.totalElements = totalElements;
 	}
 
-
-
 	public PaginationResponseDTO(Page<Task> page) {
 		this.tasks = page.getContent();
 		this.page = page.getNumber();

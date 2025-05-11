@@ -1,4 +1,4 @@
-package br.com.todolist.enums;
+package br.com.todolist.model.enumeration;
 
 /**
  * Enum que representa os níveis de prioridade atribuíveis a uma tarefa (Task).

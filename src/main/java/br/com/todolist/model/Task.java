@@ -3,7 +3,7 @@ package br.com.todolist.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import br.com.todolist.enums.Prioridade;
+import br.com.todolist.model.enumeration.Prioridade;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

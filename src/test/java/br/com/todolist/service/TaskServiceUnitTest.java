@@ -19,9 +19,9 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import br.com.todolist.dto.model.TaskRequestDTO;
 import br.com.todolist.dto.model.TaskResponseDTO;
-import br.com.todolist.enums.Prioridade;
 import br.com.todolist.exception.customException.InvalidTaskStateException;
 import br.com.todolist.model.Task;
+import br.com.todolist.model.enumeration.Prioridade;
 import br.com.todolist.repository.TaskRepository;
 
 @ExtendWith(MockitoExtension.class)

@@ -2,7 +2,7 @@ package br.com.todolist.dto.model;
 
 import java.time.LocalDate;
 
-import br.com.todolist.enums.Prioridade;
+import br.com.todolist.model.enumeration.Prioridade;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
